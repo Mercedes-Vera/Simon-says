@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { BsPlay } from "react-icons/bs";
 
-function App () {
+function App() {
   const [gamePattern, setGamePattern] = useState([]);     
   const [userPattern, setUserPattern] = useState([]);     
   const [isPlaying, setIsPlaying] = useState(false);      
@@ -62,7 +62,7 @@ function App () {
 
   // Maneja el clic del usuario y verifica el patrón
   const handleColorClick = (color) => {
-    if (isDisplayingPattern || gameOver) return;
+    if (!isPlaying || isDisplayingPattern || gameOver) return;
 
     // Añadir la clase 'active' al botón clicado
     setActiveColor(color);
@@ -109,7 +109,7 @@ function App () {
           <>
             <button 
               className={`control-button start-button ${isPlaying ? 'no-hover' : ''}`} 
-              onClick={startGame} 
+              onClick={() => !isPlaying && startGame()} // Solo iniciar si no está jugando
               disabled={isPlaying}
             >
               <BsPlay />
