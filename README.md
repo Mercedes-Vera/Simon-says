@@ -1,6 +1,6 @@
 # Simon Says
 
-Este es un juego interactivo de **Simon Says** creado con **React** y estilizado con **CSS**, que imita el famoso juego de memoria. El objetivo es repetir el patrón de colores que se va mostrando, y la dificultad aumenta conforme avanza el juego. El proyecto utiliza `useState` y `useEffect` para manejar la lógica del juego y el estado.
+Este es un juego **Simon Says**. El objetivo es repetir el patrón de colores que se va mostrando, y la dificultad aumenta conforme avanza el juego. El proyecto utiliza `useState` y `useEffect` para manejar la lógica del juego y el estado.
 
 ## Características
 
