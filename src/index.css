@@ -87,6 +87,8 @@ body {
 
 .start-button {
   background-color: #49ce68;
+  color: black;
+  font-size: 30px;
 }
 
 .start-button:hover {
@@ -138,8 +140,8 @@ body {
     padding: 10px 20px;
   }
 
-  .score {
+   .score {
     display: block;
-    font-size: 16px; /* Ajusta el tamaño del texto */
+    font-size: 16px; 
   }
 }

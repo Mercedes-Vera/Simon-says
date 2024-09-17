@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { BsPlay } from "react-icons/bs";
+import Button from './components/Button';
 
 function App() {
   const [gamePattern, setGamePattern] = useState([]);     
@@ -64,9 +65,8 @@ function App() {
   const handleColorClick = (color) => {
     if (!isPlaying || isDisplayingPattern || gameOver) return;
 
-    // Añadir la clase 'active' al botón clicado
     setActiveColor(color);
-
+    
     const newUserPattern = [...userPattern, color];
     setUserPattern(newUserPattern);
 
@@ -79,23 +79,22 @@ function App() {
       setUserPattern([]);
       setTimeout(generateNextStep, 1000);
     }
-
-    // Eliminar la clase 'active' después de un tiempo
     setTimeout(() => {
       setActiveColor(null);
-    }, 500); // Ajusta el tiempo según sea necesario
+    }, 500); 
   };
 
   return (
     <section className="game-container">
       <h1>Simon dice</h1>
       <div className="colors-grid">
-        {colors.map((color) => (
-          <div
-            key={color}
-            className={`color-button ${color} ${activeColor === color ? 'active' : ''}`}
-            onClick={() => handleColorClick(color)}
-          />
+        {colors.map((color, index) => (
+          <Button 
+            key={index} 
+            color={color} 
+            active={activeColor === color} 
+            onClick={()=>handleColorClick(color)}>
+          </Button>
         ))}
       </div>
       <div className="controls">
@@ -109,7 +108,7 @@ function App() {
           <>
             <button 
               className={`control-button start-button ${isPlaying ? 'no-hover' : ''}`} 
-              onClick={() => !isPlaying && startGame()} // Solo iniciar si no está jugando
+              onClick={() => !isPlaying && startGame()} 
               disabled={isPlaying}
             >
               <BsPlay />
