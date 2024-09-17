@@ -5,8 +5,8 @@ Este es un juego interactivo de **Simon Says** creado con **React** y estilizado
 ## Características
 
 - **Colores Neón:** El juego presenta un diseño visualmente atractivo con efectos de neón en los botones de colores (rojo, verde, azul y amarillo) que parpadean al mostrar el patrón.
-- **Puntuación en tiempo real:** A medida que el jugador repite correctamente el patrón, la puntuación se actualiza en pantalla.
-- **Pantalla de Fin de Juego:** Cuando el jugador comete un error, se muestra la puntuación final junto con un botón para reiniciar el juego.
+- **Puntuación:** A medida que el jugador repite correctamente el patrón, la puntuación se actualiza en pantalla.
+- **Fin del juego:** Cuando el jugador comete un error, se muestra la puntuación final junto con un botón para reiniciar el juego.
 
 ## Instrucciones
 
