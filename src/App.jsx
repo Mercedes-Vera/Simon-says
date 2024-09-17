@@ -28,15 +28,15 @@ function App () {
   };
 
   // Ilumina un color brevemente durante el patrón
- const highlightColor = (color) => {
-  return new Promise((resolve) => {
-    setActiveColor(color);
-    setTimeout(() => {
-      setActiveColor(null);
-      setTimeout(resolve, 300);  // Ajustar para que la espera sea más corta
-    }, 500); // Reducir tiempos de espera para mejorar la fluidez en móviles
-  });
-};
+  const highlightColor = (color) => {
+    return new Promise((resolve) => {
+      setActiveColor(color);
+      setTimeout(() => {
+        setActiveColor(null);
+        setTimeout(resolve, 500);
+      }, 700);
+    });
+  };
 
   // Inicia el juego, reiniciando todos los estados
   const startGame = () => {
@@ -64,27 +64,28 @@ function App () {
   const handleColorClick = (color) => {
     if (isDisplayingPattern || gameOver) return;
 
-    setActiveColor(color); // Destacar el color clickeado
-
-    setTimeout(() => {
-        setActiveColor(null); // Volver a desactivar el color después de 200ms
-    }, 200);
+    // Añadir la clase 'active' al botón clicado
+    setActiveColor(color);
 
     const newUserPattern = [...userPattern, color];
     setUserPattern(newUserPattern);
 
     const currentIndex = newUserPattern.length - 1;
     if (newUserPattern[currentIndex] !== gamePattern[currentIndex]) {
-        setGameOver(true);
-        setIsPlaying(false);
+      setGameOver(true);
+      setIsPlaying(false);
     } else if (newUserPattern.length === gamePattern.length) {
-        setScore(score + 1);
-        setUserPattern([]);
-        setTimeout(generateNextStep, 1000);
+      setScore(score + 1);
+      setUserPattern([]);
+      setTimeout(generateNextStep, 1000);
     }
-};
 
- 
+    // Eliminar la clase 'active' después de un tiempo
+    setTimeout(() => {
+      setActiveColor(null);
+    }, 500); // Ajusta el tiempo según sea necesario
+  };
+
   return (
     <section className="game-container">
       <h1>Simon dice</h1>
@@ -94,7 +95,6 @@ function App () {
             key={color}
             className={`color-button ${color} ${activeColor === color ? 'active' : ''}`}
             onClick={() => handleColorClick(color)}
-            onTouchStart={() => handleColorClick(color)}
           />
         ))}
       </div>
